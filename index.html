@@ -30,28 +30,56 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Domov</a></li>
-            <li><a href="#about">Link1</a></li>
-            <li><a href="#contact">Link2</a></li>
+            <li id="btn1" class="active"><a href="#">Domov</a></li>
+            <li id="btn2"><a href="#">Drevo parametrov</a></li>
+            <li id="btn3"><a href="#">Atributi</a></li>
+            <li id="btn4"><a href="#">Alternative</a></li>
+            <li id="btn5"><a href="#">Ocene</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-    <div class="container">
+    <div id="page1" class="page">
       <div class="jumbotron">
-          <h1>Title</h1>
-          <p>Example.</p>
+        <img src="images/logo.png" />
+        <p>Decisions made simple.</p>
       </div>
 
-      <section>
-        <p> Ljega ka delaš? </p>
-      </section>
+      <div class="container">
+        <h2>jDEX</h2>
+        <p> Dobrodošli na spletni aplikacij jDEX realizirani s pomočjo JavaScripta. Spletna stran omogoča odločanje po DEX odločitveni metodi. </p>
+        <p> Za pričetek odločanja se pomaknite na stran "Drevo parametrov". </p>
+      </div>
+    </div>
+
+    <div id="page2" class="container page hidden">
+      <h1> Drevo parametrov </h1>
+    </div> <!-- /page1 -->
+
+    <div id="page3" class="container page hidden">
+      <h1> Atributi </h1>
     </div> <!-- /container -->
+
+    <div id="page4" class="container page hidden">
+      <h1> Alternative </h1>
+    </div> <!-- /container -->
+
+    <div id="page5" class="container page hidden">
+      <h1> Ocene </h1>
+    </div> <!-- /container -->
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">Izdelal: Jernej Gruber</p>
+      </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/on-load.js" rel="text/javascript"></script>
   </body>
 </html>

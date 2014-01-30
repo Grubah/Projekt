@@ -1,11 +1,18 @@
 body {
-  padding-top: 60px;
-
+  padding-top: 56px;
+  font-size: 1.6em;
   background: url(../images/bg-pat.jpg) center;
+  text-shadow: 1px 1px 2px #000000;
+}
+.hidden {
+	display: none;
 }
 
 .jumbotron {
 	background: rgba(28, 30, 34, 0.6);
+	padding: 0 30px;
+	margin: 0 4px;
+	text-align: center;
 }
 
 .navbar-brand {
@@ -14,4 +21,13 @@ body {
 
 .logo {
 	height: 48px;
+}
+
+div#footer{
+	background: rgba(28, 30, 34, 0.4);
+	border-radius: 10px;
+	margin: 20px 0 0 0;
+	text-align: center;
+	padding: 10px 0 0 0;
+
 }
