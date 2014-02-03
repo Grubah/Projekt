@@ -1,11 +1,16 @@
+var element_count;
+
 $(document).ready(function() {
+	element_count = 0;
+
 	init_page();
 
 	console.log("Page loaded!");
 });
 
 function init_page(){
-	$("ul.nav li").click(function() { //On click na gumb v navigaciji
+	// Gumbi v navigaciji
+	$("ul.nav li").click(function() { 
 		console.log(this.id + " clicked");
 		var id = this.id.substring(3);
 
@@ -16,5 +21,9 @@ function init_page(){
 		// prikaže ustrezno stran
 		$(".page").addClass("hidden");
 		$("#page" + id).removeClass("hidden");
-	})
+	});
+
+	$("#main-btn").click(function(){
+		add_parameter();
+	});
 }

@@ -40,6 +40,7 @@
       </div>
     </div>
 
+    <!-- Home page -->
     <div id="page1" class="page">
       <div class="jumbotron">
         <img src="images/logo.png" />
@@ -51,29 +52,63 @@
         <p> Dobrodošli na spletni aplikacij jDEX realizirani s pomočjo JavaScripta. Spletna stran omogoča odločanje po DEX odločitveni metodi. </p>
         <p> Za pričetek odločanja se pomaknite na stran "Drevo parametrov". </p>
       </div>
-    </div>
 
+      <div id="footer">
+        <div class="container">
+          <p class="text-muted">Izdelal: Jernej Gruber</p>
+        </div>
+      </div>
+    </div> <!-- /Home page -->
+
+    <!-- Drevo parametrov -->
     <div id="page2" class="container page hidden">
       <h1> Drevo parametrov </h1>
-    </div> <!-- /page1 -->
+      <button class="btn btn-info" type="button"> Dodaj element </button>
+      <p>
+        <ul id="tree">
 
+          <li> <!-- main element -->
+            <div class="param">
+              <input class="form-control input-sm" type="text" value="Ocena"></input>
+              <button id="main-btn" class="btn btn-success" type="button">Dodaj</button>
+            </div>
+
+            <ul id="main"> 
+              <li id="p1">
+                <div class="param">
+                  <input class="form-control input-sm" type="text" value="Ocena"></input>
+                  <button class="btn btn-success" type="button">Dodaj</button>
+                  <button class="btn btn-danger" type="button">Zbriši</button>
+                </div>
+
+                <ul id="p1-c">
+                  <li id="p2">
+                  </li>
+                </ul>
+
+              </li>
+            </ul>
+
+          </li><!-- /Main element -->
+
+        </ul>
+      </p>
+    </div> <!-- /Drevo parametrov -->
+
+    <!-- Atributi -->
     <div id="page3" class="container page hidden">
       <h1> Atributi </h1>
-    </div> <!-- /container -->
+    </div> <!-- /Atributi -->
 
+    <!-- Alternative -->
     <div id="page4" class="container page hidden">
       <h1> Alternative </h1>
-    </div> <!-- /container -->
+    </div> <!-- /Alternative -->
 
+    <!-- Ocene -->
     <div id="page5" class="container page hidden">
       <h1> Ocene </h1>
-    </div> <!-- /container -->
-
-    <div id="footer">
-      <div class="container">
-        <p class="text-muted">Izdelal: Jernej Gruber</p>
-      </div>
-    </div>
+    </div> <!-- /Ocene -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -81,5 +116,6 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Custom JS -->
     <script src="js/on-load.js" rel="text/javascript"></script>
+    <script src="js/parameters.js" rel="text/javascript"></script>
   </body>
 </html>

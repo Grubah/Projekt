@@ -1,7 +1,7 @@
 body {
   padding-top: 56px;
   font-size: 1.6em;
-  background: url(../images/bg-pat.jpg) center;
+  background: url(../images/bg-pat.jpg) center top;
   text-shadow: 1px 1px 2px #000000;
 }
 .hidden {
@@ -23,11 +23,16 @@ body {
 	height: 48px;
 }
 
+#tree input {
+	display: inline-block;
+	width: 20%;
+	min-width: 100px;
+}
+
 div#footer{
 	background: rgba(28, 30, 34, 0.4);
 	border-radius: 10px;
 	margin: 20px 0 0 0;
 	text-align: center;
 	padding: 10px 0 0 0;
-
 }
