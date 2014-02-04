@@ -23,7 +23,8 @@ function init_page(){
 		$("#page" + id).removeClass("hidden");
 	});
 
+	//Gumb dodaj v glavnega parrenta
 	$("#main-btn").click(function(){
-		add_parameter();
+		add_parameter("main");
 	});
 }

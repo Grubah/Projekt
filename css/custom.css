@@ -23,6 +23,14 @@ body {
 	height: 48px;
 }
 
+.button:hover {
+	cursor: pointer;
+}
+
+.param {
+	margin: 2px 0;
+}
+
 #tree input {
 	display: inline-block;
 	width: 20%;

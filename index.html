@@ -32,7 +32,7 @@
           <ul class="nav navbar-nav">
             <li id="btn1" class="active"><a href="#">Domov</a></li>
             <li id="btn2"><a href="#">Drevo parametrov</a></li>
-            <li id="btn3"><a href="#">Atributi</a></li>
+            <li id="btn3"><a href="#">Zaloge vrednosti</a></li>
             <li id="btn4"><a href="#">Alternative</a></li>
             <li id="btn5"><a href="#">Ocene</a></li>
           </ul>
@@ -49,7 +49,7 @@
 
       <div class="container">
         <h2>jDEX</h2>
-        <p> Dobrodošli na spletni aplikacij jDEX realizirani s pomočjo JavaScripta. Spletna stran omogoča odločanje po DEX odločitveni metodi. </p>
+        <p> Dobrodošli na spletni aplikacij jDEX realizirani s pomočjo JavaScripta in jQueryja. Spletna stran omogoča odločanje po DEX odločitveni metodi. </p>
         <p> Za pričetek odločanja se pomaknite na stran "Drevo parametrov". </p>
       </div>
 
@@ -63,30 +63,29 @@
     <!-- Drevo parametrov -->
     <div id="page2" class="container page hidden">
       <h1> Drevo parametrov </h1>
-      <button class="btn btn-info" type="button"> Dodaj element </button>
       <p>
         <ul id="tree">
 
           <li> <!-- main element -->
             <div class="param">
               <input class="form-control input-sm" type="text" value="Ocena"></input>
-              <button id="main-btn" class="btn btn-success" type="button">Dodaj</button>
+              <img id="main-btn" src="images/add.png" class="button" width="16px" />
             </div>
 
-            <ul id="main"> 
-              <li id="p1">
+            <ul id="main">
+              <!-- <li id="111"> primer
                 <div class="param">
                   <input class="form-control input-sm" type="text" value="Ocena"></input>
-                  <button class="btn btn-success" type="button">Dodaj</button>
-                  <button class="btn btn-danger" type="button">Zbriši</button>
+                  <img src="images/add.png" class="button" width="16px" />
+                  <img src="images/delete.png" class="button" width="16px" />
                 </div>
 
-                <ul id="p1-c">
-                  <li id="p2">
+                <ul id="p111-children">
+                  <li id="112">
                   </li>
                 </ul>
 
-              </li>
+              </li>-->
             </ul>
 
           </li><!-- /Main element -->
@@ -95,10 +94,10 @@
       </p>
     </div> <!-- /Drevo parametrov -->
 
-    <!-- Atributi -->
+    <!-- Zaloge vrednosti -->
     <div id="page3" class="container page hidden">
-      <h1> Atributi </h1>
-    </div> <!-- /Atributi -->
+      <h1> Zaloge vrednosti </h1>
+    </div> <!-- /Zaloge vrednosti -->
 
     <!-- Alternative -->
     <div id="page4" class="container page hidden">
