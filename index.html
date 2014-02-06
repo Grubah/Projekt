@@ -60,32 +60,21 @@
       </div>
     </div> <!-- /Home page -->
 
-    <!-- Drevo parametrov -->
+    <!-- *****************************************
+      ************** Drevo parametrov ************
+    **********************************************-->
     <div id="page2" class="container page hidden">
       <h1> Drevo parametrov </h1>
       <p>
         <ul id="tree">
 
-          <li> <!-- main element -->
+          <li id="0"> <!-- main element -->
             <div class="param">
               <input class="form-control input-sm" type="text" value="Ocena"></input>
               <img id="main-btn" src="images/add.png" class="button" width="16px" />
             </div>
 
-            <ul id="main">
-              <!-- <li id="111"> primer
-                <div class="param">
-                  <input class="form-control input-sm" type="text" value="Ocena"></input>
-                  <img src="images/add.png" class="button" width="16px" />
-                  <img src="images/delete.png" class="button" width="16px" />
-                </div>
-
-                <ul id="p111-children">
-                  <li id="112">
-                  </li>
-                </ul>
-
-              </li>-->
+            <ul id="0-children">
             </ul>
 
           </li><!-- /Main element -->
@@ -94,9 +83,36 @@
       </p>
     </div> <!-- /Drevo parametrov -->
 
-    <!-- Zaloge vrednosti -->
+
+    <!-- *****************************************
+      *********** Zaloge vrednosti ***************
+    ****************************************** -->
     <div id="page3" class="container page hidden">
       <h1> Zaloge vrednosti </h1>
+      <div class="alert alert-dismissable alert-info">
+        <button class="close" data-dismiss="alert" type="button">
+          ×
+        </button>
+        <p>Vse zaloge uredimo od najslabše oz. najmanj zaželjene do najboljše oz. najbolj zaželjene!</p>
+        <p>Vrednosti je mogoče sortirati s pomočjo drag n' drop.</p>
+      </div>
+
+      <div id="0-stock" class="panel panel-primary">
+          <div class="panel-heading">
+              <h3 class="panel-title">
+                Ocena
+              </h3>
+          </div>
+          <div class="panel-body">
+            <input id="0-nvalue" class="form-control input-sm narrow" type="text" placeholder="vrednost"></input>
+            <button class="btn btn-primary btn-sm" type="submit" onclick="add_value(0);">dodaj vrednost</button>
+          </div>
+          <div class="panel-body"> 
+            <ul id="0-values" class="sortable">
+            </ul>
+          </div>
+      </div>
+
     </div> <!-- /Zaloge vrednosti -->
 
     <!-- Alternative -->
@@ -109,12 +125,26 @@
       <h1> Ocene </h1>
     </div> <!-- /Ocene -->
 
+
+    <!-- ********************************
+      ************ Scripts **************
+    **********************************-->
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Custom JS -->
     <script src="js/on-load.js" rel="text/javascript"></script>
     <script src="js/parameters.js" rel="text/javascript"></script>
+    <script src="js/stock-values.js" rel="text/javascript"></script>
+    <script src="js/jquery-ui.js" rel="text/javascript"></script>
+
+    <script>
+      $(function() {
+      $( ".sortable" ).sortable();
+      $( ".sortable" ).disableSelection();
+      });
+    </script>
   </body>
 </html>

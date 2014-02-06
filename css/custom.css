@@ -31,10 +31,14 @@ body {
 	margin: 2px 0;
 }
 
-#tree input {
+#tree input, .narrow {
 	display: inline-block;
 	width: 20%;
 	min-width: 100px;
+}
+
+.sortable {
+	cursor: move;
 }
 
 div#footer{
