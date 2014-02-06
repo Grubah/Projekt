@@ -4,23 +4,25 @@ function new_stock_value(parent_id, param_id){
 
 	// Koda za nov element v zalogi vrednosti
 	var output = ' \
-		<div id="'+param_id+'-stock" class="panel panel-primary"> \
-			<div class="panel-heading"> \
-				<h3 class="panel-title"> \
-					'+name+' \
-				</h3> \
-			</div> \
-			<div class="panel-body"> \
-				<input id="'+param_id+'-nvalue" class="form-control input-sm narrow" type="text" placeholder="vrednost"></input> \
-				<button class="btn btn-primary btn-sm" type="submit" onclick="add_value('+param_id+');">dodaj vrednost</button> \
-			</div> \
-			<div class="panel-body">  \
-				<ul id="'+param_id+'-values" class="sortable"> \
-				</ul> \
+		<div id="'+param_id+'-stock"> \
+			<div class="panel panel-primary"> \
+				<div class="panel-heading"> \
+					<h3 class="panel-title"> \
+						'+name+' \
+					</h3> \
+				</div> \
+				<div class="panel-body"> \
+					<input id="'+param_id+'-nvalue" class="form-control input-sm narrow" type="text" placeholder="vrednost"></input> \
+					<button class="btn btn-primary btn-sm" type="submit" onclick="add_value('+param_id+');">dodaj vrednost</button> \
+				</div> \
+				<div class="panel-body">  \
+					<ul id="'+param_id+'-values" class="sortable"> \
+					</ul> \
+				</div> \
 			</div> \
 		</div>';
 
-		$("#"+parent_id+"-stock").after(output); //vedno dodamo za starša
+		$("#"+parent_id+"-stock").append(output); //vedno dodamo za starša
 }
 
 // doda vrednost v elementu zaloge vrednosti
