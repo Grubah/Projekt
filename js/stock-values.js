@@ -26,8 +26,13 @@ function new_stock_value(parent_id, param_id){
 }
 
 // doda vrednost v elementu zaloge vrednosti
-function add_value(param_id){
-	var value =  $("#"+param_id+"-nvalue").val(); //pridobi vrednost inputa
+function add_value(param_id, name){
+	var value;
+	if( name==null )
+		value =  $("#"+param_id+"-nvalue").val(); //pridobi vrednost inputa
+	else
+		value = name;
+
 	var output;
 
 	if(value != ""){ //če input ni prazen...
@@ -50,7 +55,6 @@ function add_value(param_id){
 
 		$("#"+param_id+"-values").before(output);
 	}
-
 	//console.log("added new stock value with the name " + value + ", to " + param_id);
 }
 

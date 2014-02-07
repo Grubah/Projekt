@@ -41,6 +41,14 @@ body {
 	cursor: move;
 }
 
+#page3 ul li:last-child {
+	color: green;
+}
+
+#page3 ul li:first-child {
+	color: red;
+}
+
 div#footer{
 	background: rgba(28, 30, 34, 0.4);
 	border-radius: 10px;
