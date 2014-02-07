@@ -25,6 +25,7 @@ body {
 
 .button:hover {
 	cursor: pointer;
+	padding: 0 1px;
 }
 
 .param {
@@ -42,11 +43,11 @@ body {
 }
 
 #page3 ul li:last-child {
-	color: green;
+	color: #44ff66;
 }
 
 #page3 ul li:first-child {
-	color: red;
+	color: #ff3344;
 }
 
 div#footer{

@@ -13,7 +13,7 @@ function new_stock_value(parent_id, param_id){
 				</div> \
 				<div class="panel-body"> \
 					<input id="'+param_id+'-nvalue" class="form-control input-sm narrow" type="text" placeholder="vrednost"></input> \
-					<button class="btn btn-primary btn-sm" type="submit" onclick="add_value('+param_id+');">dodaj vrednost</button> \
+					<button class="btn btn-primary btn-sm" type="submit" onclick="add_value('+param_id+');">Dodaj</button> \
 				</div> \
 				<div class="panel-body">  \
 					<ul id="'+param_id+'-values" class="sortable"> \

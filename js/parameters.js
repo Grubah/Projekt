@@ -2,15 +2,15 @@ function add_parameter(parent){
 
 	// html za nov parameter
 	var parameter = " \
-		<li id='"+element_count+"'> \
+		<li id='"+element_count+"' class='parent'> \
 	        <div class='param'> \
 	          <input class='form-control input-sm' type='text' value='Parameter "+element_count+"' onchange='rename_parameter("+element_count+", this.value)'></input> \
 	          <img id='btn_add_"+element_count+"' src='images/add.png' class='button' width='16px' /> \
 	          <img id='btn_del_"+element_count+"' src='images/delete.png' class='button' width='16px' /> \
 	        </div> \
-	        <ul id='"+element_count+"-children'> \
+	        <ul id='"+element_count+"-children' class='children'> \
 	        </ul> \
-	      </li>";
+	    </li>";
 
     $("#"+parent+"-children").append(parameter); //dodamo nov parameter pod starševski element
 

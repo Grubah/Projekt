@@ -41,7 +41,9 @@
       </div>
     </div>
 
-    <!-- Home page -->
+    <!-- *****************************************
+      ***************** Home page ****************
+    **********************************************-->
     <div id="page1" class="page">
       <div class="jumbotron">
         <img src="images/logo.png" />
@@ -50,7 +52,7 @@
 
       <div class="container">
         <h2>jDEX</h2>
-        <p> Dobrodošli na spletni aplikacij jDEX realizirani s pomočjo JavaScripta in jQueryja. Spletna stran omogoča odločanje po DEX odločitveni metodi. </p>
+        <p> Dobrodošli na spletni aplikacij jDEX realizirani s pomočjo JavaScripta in jQuery knjižic. Spletna stran omogoča odločanje po DEX odločitveni metodi. </p>
         <p> Za pričetek odločanja se pomaknite na stran "Drevo parametrov". </p>
       </div>
 
@@ -61,6 +63,7 @@
       </div>
     </div> <!-- /Home page -->
 
+
     <!-- *****************************************
       ************** Drevo parametrov ************
     **********************************************-->
@@ -69,13 +72,13 @@
       <p>
         <ul id="tree">
 
-          <li id="0"> <!-- main element -->
+          <li id="0" class="parent"> <!-- main element -->
             <div class="param">
               <input class="form-control input-sm" type="text" value="Ocena"></input>
               <img id="main-btn" src="images/add.png" class="button" width="16px" />
             </div>
 
-            <ul id="0-children">
+            <ul id="0-children" class="children">
             </ul>
 
           </li><!-- /Main element -->
@@ -87,7 +90,7 @@
 
     <!-- *****************************************
       *********** Zaloge vrednosti ***************
-    ****************************************** -->
+    ********************************************** -->
     <div id="page3" class="container page hidden">
       <h1> Zaloge vrednosti </h1>
       <div class="alert alert-dismissable alert-info">
@@ -106,7 +109,7 @@
             </div>
             <div class="panel-body">
               <input id="0-nvalue" class="form-control input-sm narrow" type="text" placeholder="vrednost"></input>
-              <button class="btn btn-primary btn-sm" type="submit" onclick="add_value(0);">dodaj vrednost</button>
+              <button class="btn btn-primary btn-sm" type="submit" onclick="add_value(0);">Dodaj</button>
             </div>
             <div class="panel-body"> 
               <ul id="0-values" class="sortable">
@@ -117,19 +120,28 @@
 
     </div> <!-- /Zaloge vrednosti -->
 
+
     <!-- ********************************************
       *********** Odločitvena pravila ***************
-    ********************************************* -->
+    ************************************************* -->
     <div id="page4" class="container page hidden">
       <h1> Odločitvena pravila </h1>
+      <div id="rules-wrapper">
+      </div>
     </div> <!-- /Alternative -->
 
-    <!-- Alternative -->
+
+    <!-- ********************************************
+      *************** Alternative *******************
+    ********************************************* -->
     <div id="page5" class="container page hidden">
       <h1> Alternative </h1>
     </div> <!-- /Alternative -->
 
-    <!-- Ocene -->
+
+    <!-- ********************************************
+      ****************** Ocene **********************
+    ********************************************* -->
     <div id="page6" class="container page hidden">
       <h1> Ocene </h1>
     </div> <!-- /Ocene -->
@@ -147,12 +159,13 @@
     <script src="js/on-load.js" rel="text/javascript"></script>
     <script src="js/parameters.js" rel="text/javascript"></script>
     <script src="js/stock-values.js" rel="text/javascript"></script>
-    <script src="js/jquery-ui.js" rel="text/javascript"></script>
+    <script src="js/rules.js" rel="text/javascript"></script>
 
+    <script src="js/jquery-ui.js" rel="text/javascript"></script>
     <script>
       $(function() {
-      $( ".sortable" ).sortable();
-      $( ".sortable" ).disableSelection();
+        $( ".sortable" ).sortable();
+        $( ".sortable" ).disableSelection();
       });
     </script>
   </body>

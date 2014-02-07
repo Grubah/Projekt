@@ -35,6 +35,10 @@ function init_page(){
 	$("#main-btn").click(function(){
 		add_parameter(0);
 	});
+
+	$("#btn4").click(function() {
+		init_rules();
+	});
 }
 
 //nastavi testne vrednosti
@@ -59,9 +63,10 @@ function test1(){
 	add_parameter(0);
 	rename_parameter(2, "Price");
 	$("#2 .param input").val("Price");
-	add_value(2, "Počasen");
-	add_value(2, "Povprečen");
-	add_value(2, "Hiter");
+	add_value(2, "Nesprejemljiva");
+	add_value(2, "Draga");
+	add_value(2, "Normalna");
+	add_value(2, "Poceni");
 
 	// prvi parameter - prvi podparameter
 	add_parameter(1);
