@@ -91,5 +91,4 @@ function test1(){
 	add_value(5, "Majhen");
 	add_value(5, "Povprečen");
 	add_value(5, "Velik");
-	add_value(5, "Zelo velik");
 }
