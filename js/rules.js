@@ -47,23 +47,23 @@ function init_rules(){
 	get_compared_children(0);
 }
 
-// retruns all children with values
+// Vrne zalogo vrednosti vseh otrok od navedenega starša
 function get_children_values(p_id){
-	var table = new Array();
-	var $list;
+	var table = new Array(); // končna tabela z vsemi zalogami vrednosti
+	var $list; // pomni zalogo vrednosti
 	var $children = $( "#"+p_id+"-children" ).children(); // shrani vse otroke
 
 	$children.each(function(i) {
 		//console.log("id: "+this.id);
-		var temp = new Array(); // začasna tabela za hrambo posemezne vrednosti iz zaloge vrednosti.
-		$list = $("#"+this.id+"-values li text");
+		var temp = new Array(); // začasna tabela za hrambo posemezne zaloge vrednosti.
 
-		$list.each(function(j) {
+		$list = $("#"+this.id+"-values li text"); // vse vrednosti ene zaloge
+		$list.each(function(j) { // napolni temp z ustreznimi vrednostmi
 			//console.log($(this).text());
 			temp[j] = $(this).text();
 		});
 
-		table[i] = temp;
+		table[i] = temp; // doda zalogo vrednosti v tabelo
 	});
 
 	//console.dir(table);
@@ -73,25 +73,30 @@ function get_children_values(p_id){
 
 function get_compared_children(p_id){
 	var table = get_children_values(p_id);  // hrani vse zaloge vrednosti potrebne za primerjavo
-	var total = 1; // pomni število potrebnih primerjav -> 1 zaradi *= množenja
-	var compared = new Array(); // array ki pomni primerjave formatirane za izpis v html
+	var total = 1; // število potrebnih primerjav
+	var limit = 1; // določa kdaj v tabeli je potrebno začeti zapisovati novo vrednost
+
+	var compared = new Array();
 
 	$.each(table, function(i, values){ // za vsak podparameter
 		total *= values.length; // izračuna število potrebnih vrstic da se pokrijejo vse možnosti -> p1*p2*...*pn
 	});
 
 	$.each(table, function(i, values){ // za vsak podparameter
-		var max = table[i].length; 
-		var k = 0; // index k določa kolikokrat se mora vrednost parametra ponoviti
+		var max = table[i].length; // maksimalni index
+		
+		var k = 0; // index s katerim se prestavljamo po zalogi vrednosti
 
 		compared[i] = new Array();
 
-		for( var j=0; j < total; j++ ) { // za vsako vrednost v parametru
-			compared[i][j] = table[i][k%max];
+		for( var j=0; j < total; j++ ) { // izvaja tako dolgo dokler ne napolne vseh vrstic ki so potrebne za primerjavo vsake z vsakim
+			compared[i][j] = table[i][k%max]; // polnjenje tabele
 
-			if( 0 == (j+1)%(i+1) ) // 
+			if( 0 == (j+1)%limit ) // določa kdaj se spremeni vrednost izvorne zaloge
 				k++;
 		}
+
+		limit *= table[i].length;
 	});
 
 	return compared;
