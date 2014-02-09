@@ -1,3 +1,4 @@
+//nastavi pravila odločitev
 function init_rules(){
 	var par_name;
 	var output;
@@ -19,53 +20,70 @@ function init_rules(){
 	});
 
 	rules = n_rules;
-	console.dir(rules);
+	//console.dir(rules);
 }
 
-function render_rules(){
-	var name;
-	var output;
-	var $parents = $( "#page2 ul li.parent" ); //vsi parametri ki imajo pod parametre
 
+// izriše tabelo odločitev
+function render_rules(){
 	$( "#rules-wrapper" ).empty();
 
-	$parents.each(function( i ) { //za vsak element...
-		if( $("#"+i+"-children li").length > 1 ) { //... ki ima vsaj dva otroka
-			name = $("#"+i+" .param input").val();
+	$.each(rules, function( i, rule ) { //za vsak parameter ki ima odločitvena pravila...
+		//console.dir(rule);
+		var cells = new Array();
+		var len;
 
-			var table = get_compared_children(i);
+		// koda pred tabelo pravil
+		output = ' \
+			<div class="panel panel-primary"> \
+				<div class="panel-heading"> \
+					<h3 class="panel-title">' + $("#"+i+" .param input").val() + '</h3> \
+				</div> \
+				<div class="panel-body"> \
+					<table>'; 
 
-			output = ' \
-				<div class="panel panel-primary"> \
-					<div class="panel-heading"> \
-						<h3 class="panel-title">' +name+ '</h3> \
-					</div> \
-					<div class="panel-body"> \
-						<table>'; // koda pred tabelo pravil
 
-			// table of comparing
-			for(var j=0; j < table[0].length; j++){
-				output += ' \
-					<tr>';
+		// Glava tabele primerjav
+		output += ' \
+			<thead>';
 
-				$.each(table, function(k, cells) {
-					output += ' \
-						<td> \
-							'+cells[j]+' \
-						</td>';
-				});
-
-				output += ' \
-					</tr>';
-			}
-
+		$.each(rules[i], function(j, values) {
 			output += ' \
-						</table> \
-					</div> \
-				</div>';
+				<td>'+$("#"+j+" .param input").val()+'</td>';
 
-			$( "#rules-wrapper" ).append(output); // koda za tabelo pravil
+			cells.push(j);
+			len = values.length;
+		});
+		
+		output += ' \
+				<td>Vrednost</td>';
+
+		output += ' \
+			</thead>';
+		// konec glave tabele
+		
+
+		// Vrstice
+		for(var a=0; a<len; a++){
+			output += ' \
+				<tr>';
+			$.each(cells, function(k, cell){
+				output += ' \
+					<td>'+rule[cell][a]+'</td>' ;
+			} );
+			output += ' \
+					<td>'+generate_options(i)+'</td>' ;
+			output += ' \
+				</tr>';
 		}
+		// /Vrstice
+
+		output += ' \
+					</table> \
+				</div> \
+			</div>';
+
+		$( "#rules-wrapper" ).append(output); // vstavi html za tabelo pravil
 	});
 }
 
@@ -139,7 +157,27 @@ function get_compared_children(p_id){
 
 
 function get_options(id){
-	$( "#"+id+"-children li" ).each(function(i){
+	var options = new Array();
+	$( "#"+id+"-values li" ).each(function(i){
 		console.log(i + ": " + $(this).text());
+		options.push($(this).text());
 	});
+
+	return options;
+}
+
+function generate_options(id){
+	var options = get_options(id);
+
+	var output = ' \
+		<select>';
+
+	$.each(options, function(i, opt) {
+		output += ' \
+			<option value="'+opt+'">'+opt+'</options>';
+	});
+	output += ' \
+		</select> ';
+
+	return output;
 }
