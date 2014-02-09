@@ -1,7 +1,9 @@
 var element_count;
+var rules;
 
 $(document).ready(function() {
 	element_count = 1; //Število elementov v drevesu
+	rules = new Array(); // odločitvena pravila
 
 	init_page(); // Nastavi funckije in lastnosti kot morajo biti na začetku
 
@@ -38,6 +40,7 @@ function init_page(){
 
 	$("#btn4").click(function() {
 		init_rules();
+		render_rules();
 	});
 }
 

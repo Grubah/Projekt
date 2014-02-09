@@ -1,4 +1,28 @@
 function init_rules(){
+	var par_name;
+	var output;
+	var n_rules = {};
+	var $parents = $( "#page2 ul li.parent" ); //vsi parametri ki imajo pod parametre
+
+	$parents.each(function( i ) { //za vsak element...
+		if( $("#"+i+"-children li").length > 1 ) { //... ki ima vsaj dva otroka
+			var temp = {};
+			var ids = get_children_ids(i);
+			var child = get_compared_children(i);
+
+			$.each(ids, function(j, id) {
+				temp[id] = child[j];
+			});
+
+			n_rules[i] = temp;
+		}
+	});
+
+	rules = n_rules;
+	console.dir(rules);
+}
+
+function render_rules(){
 	var name;
 	var output;
 	var $parents = $( "#page2 ul li.parent" ); //vsi parametri ki imajo pod parametre
@@ -43,8 +67,19 @@ function init_rules(){
 			$( "#rules-wrapper" ).append(output); // koda za tabelo pravil
 		}
 	});
+}
 
-	get_compared_children(0);
+function get_children_ids(p_id){
+	var ids = new Array(); // končna tabela z vsemi zalogami vrednosti
+	var $children = $( "#"+p_id+"-children" ).children(); // shrani vse otroke
+
+	$children.each(function(i) {
+		ids.push(this.id);
+	});
+
+	//console.dir(table);
+	
+	return ids;
 }
 
 // Vrne zalogo vrednosti vseh otrok od navedenega starša
