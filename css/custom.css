@@ -67,3 +67,7 @@ table thead {
 	text-decoration: underline;
 	font-weight: bold;
 }
+
+#page5 h3 {
+	margin-top: 2px;
+}

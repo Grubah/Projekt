@@ -35,7 +35,7 @@ function render_rules(){
 
 		// koda pred tabelo pravil
 		output = ' \
-			<div class="panel panel-primary"> \
+			<div class="panel panel-default"> \
 				<div class="panel-heading"> \
 					<h3 class="panel-title">' + $("#"+i+" .param input").val() + '</h3> \
 				</div> \
@@ -76,7 +76,7 @@ function render_rules(){
 			output += ' \
 				</tr>';
 		}
-		// /Vrstice
+		//  konec vrstic v tabeli
 
 		output += ' \
 					</table> \
@@ -159,7 +159,7 @@ function get_compared_children(p_id){
 function get_options(id){
 	var options = new Array();
 	$( "#"+id+"-values li" ).each(function(i){
-		console.log(i + ": " + $(this).text());
+		//console.log(i + ": " + $(this).text());
 		options.push($(this).text());
 	});
 

@@ -1,8 +1,10 @@
 var element_count;
 var rules;
+var alts;
 
 $(document).ready(function() {
 	element_count = 1; //Število elementov v drevesu
+	alts = 0;
 	rules = new Array(); // odločitvena pravila
 
 	init_page(); // Nastavi funckije in lastnosti kot morajo biti na začetku
@@ -16,7 +18,7 @@ $(document).ready(function() {
 function init_page(){ 
 	// Gumbi v navigaciji
 	$("ul.nav li").click(function() { 
-		console.log(this.id + " clicked");
+		//console.log(this.id + " clicked");
 		var id = this.id.substring(3);
 
 		// nastavi gumbu active class
@@ -41,6 +43,10 @@ function init_page(){
 	$("#btn4").click(function() {
 		init_rules();
 		render_rules();
+	});
+
+	$("#btn_add_alt").click(function() {
+		add_alternative();
 	});
 }
 
@@ -91,7 +97,6 @@ function test1(){
 	add_parameter(1);
 	rename_parameter(5, "Hard Drive");
 	$("#5 .param input").val("Hard Drive");
-	add_value(5, "Majhen");
-	add_value(5, "Povprečen");
-	add_value(5, "Velik");
+	add_value(5, "Neprimeren");
+	add_value(5, "Primeren");
 }
