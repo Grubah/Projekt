@@ -175,11 +175,11 @@ function generate_options(id, select_id){
 	if(select_id == null) {
 		var output = ' \
 		<select id="'+id+'-eval-select" onchange="evaluate_all('+alts+')"> \
-			<option>! Nedoločeno !</options>';
+			<option value="unknown">! Nedoločeno !</options>';
 	} else {
 		var output = ' \
 		<select id="'+id+'-'+select_id+'-option"> \
-			<option>! Nedoločeno !</options>';
+			<option value="unknown">! Nedoločeno !</options>';
 
 	}
 	

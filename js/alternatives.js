@@ -6,9 +6,8 @@ function add_alternative() {
 
 	alts ++;
 
-	//console.log("add new alt");
-	//console.dir(parameters);
-	//console.dir(evaluvations);
+	console.log("add new alt");
+	console.dir(evaluvations);
 }
 
 function draw_alternative(params, evals) {
@@ -28,6 +27,7 @@ function draw_alternative(params, evals) {
 	});
 
 	output += ' \
+		<button class="btn btn-primary btn-sm" type="button" onclick="evaluate_all('+alts+')">Izračunaj oceno</button> \
 		<h3>Ocene</h3> \
 		<table>';
 
@@ -59,12 +59,29 @@ function remove_alt(id) {
 
 function evaluate_all(alt_id) {
 	var evaluations = get_params(true);
+	var score = new Array();
+	var params = get_params(true);
 
-	console.log(get_evaluation(0, alt_id));;
 
-	/*$.each(evaluations, function(id) {
-		get_evaluation(id, eval_id);
-	});*/
+	$.each(evaluations, function(id) {
+		score[id] = get_evaluation(id, alt_id);
+		console.log(id + " id")
+	});
+
+	console.dir(params);
+
+	for(var i=0; i < params.length; i++) {
+		var label;
+		if(score[i] == "!error:Parameter še ni določen!") {
+			label = "Ni izpoljnenih dovolj atributov alternative!";
+		} else if(score[i] == "unknown") {
+			label = "Nesustrezno definirna odločitvena pravila!";
+		} else  {
+			label = score[i];
+		}
+
+		$("#"+params[i]+"-result").text(label);
+	}
 
 	console.log("Evaluation on "+alt_id+" complete");
 }
@@ -72,20 +89,23 @@ function evaluate_all(alt_id) {
 
 // vrne onceno zahtevanega idja v zahtevani alternativi
 function get_evaluation(parent_id, alt_id) {
+	console.log("get_evaluation "+parent_id+" "+alt_id)
 	var values = new Array(); // parametri za ocenitev
 	var lines = new Array(); // vse vrstice kjer smo našli element
 	var line; // vrstica z nastavljeno oceno
+	var par_id;
 	var score;
+	
 
 	$("#"+parent_id+"-children").children().each(function() { // vsak podparameter
 		var select_id = $(this).attr('id'); // dobimo id parametra
 		var $element = $("#"+alt_id+"-alt #"+select_id+"-eval-select"); // pridobimo element iz določene alternative
 		
-		//console.log(select_id + "select_id");
+		console.log(select_id + " select_id");
 
 		if ( $element.length  != 0 ) { // če element obstaja/imamo določeno vrednost na strani
-
-			if( $element.val().trim() == "! Nedoločeno !" ) // če je še nedoločen
+			console.log("element exists");
+			if( $element.val().trim() == "unknown" ) // če je še nedoločen
 				score = "!error:Parameter še ni določen!";
 			else // če je določen
 				par_id = $element.attr('id').split("-")[0];
@@ -94,33 +114,39 @@ function get_evaluation(parent_id, alt_id) {
 
 		} else { // če element ne obstaja / nimamo določene vrednosti na strani
 			console.log("check for children");
-			if( $(this).children().length > 1 ) { // če ima dovolj parametrov pridobi njegovo oceno...
-				//console.log("rekurziri " + select_id);
+
+			//$(this).children().length > 1
+			if( $("#"+select_id+"-children").children().length > 1 ) { // če ima dovolj parametrov pridobi njegovo oceno...
+				console.log("rekurziri " + select_id);
 				values[select_id] = get_evaluation(select_id, alt_id); //REKURZIVEN klic
 			} else { // če ima premalo parametrov -> ERROR!
 				score = "!error:Premalo podparametrov!";
 			}
 		}
 	});
-
-	$.each(rules[parent_id], function(i, row) {
-		$.each(row, function(j, val) {
-			if( val == values[i] ) {
-				lines.push(j);
-				//console.log("line: " + j)
-			}
+	
+	// preveri pravila*
+	if(rules[parent_id] != null){
+		$.each(rules[parent_id], function(i, row) { // za vsako vrstico v pravilih za določen parameter
+			$.each(row, function(j, val) { // za vsako celico v vrstici
+				if( val == values[i] ) { // če se parametra (določen v alternativi in v celici) ujemata
+					lines.push(j); // dodaj število vrstice
+					//console.log("line: " + j)
+				}
+			});
 		});
-	});
+	}
 
-	line = get_most_rep(lines);
+	line = get_most_rep(lines); //pridobimo vrstico z najvišjim številom ujemanj v pravilih
 
-	if( $("#"+parent_id+"-"+line+"-option").length > 0)
-		score = $("#"+parent_id+"-"+line+"-option").val().trim();
+	if(line != null) // če imamo določeno vrstico
+		if( $("#"+parent_id+"-"+line+"-option").length > 0) // če imamo definirano vrednost za to primerjavo v odločitvenih pravilih
+			score = $("#"+parent_id+"-"+line+"-option").val().trim(); // pridobimo vrednost ocene
 
 	//console.log(values);
 	console.log("--");
 
-	return score;
+	return score; // vrne oceno za nevedenega starša iz določene alternative
 }
 
 
@@ -154,6 +180,8 @@ function get_most_rep(arr) {
 	var max     = 0;
 	var res;
 
+
+
 	for( var i = 0, total = arr.length; i < total; ++i ) {
 		var val = arr[i],
 		inc = ( result[val] || 0 ) + 1;
@@ -166,6 +194,5 @@ function get_most_rep(arr) {
 		}
 	}
 
-	//alert(res);
 	return res;
 }
