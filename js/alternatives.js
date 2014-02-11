@@ -60,7 +60,7 @@ function remove_alt(id) {
 function evaluate_all(alt_id) {
 	var evaluations = get_params(true);
 
-	console.log(get_evaluation(1, alt_id));;
+	console.log(get_evaluation(0, alt_id));;
 
 	/*$.each(evaluations, function(id) {
 		get_evaluation(id, eval_id);
@@ -81,7 +81,7 @@ function get_evaluation(parent_id, alt_id) {
 		var select_id = $(this).attr('id'); // dobimo id parametra
 		var $element = $("#"+alt_id+"-alt #"+select_id+"-eval-select"); // pridobimo element iz določene alternative
 		
-		console.log(select_id);
+		//console.log(select_id + "select_id");
 
 		if ( $element.length  != 0 ) { // če element obstaja/imamo določeno vrednost na strani
 
@@ -95,7 +95,8 @@ function get_evaluation(parent_id, alt_id) {
 		} else { // če element ne obstaja / nimamo določene vrednosti na strani
 			console.log("check for children");
 			if( $(this).children().length > 1 ) { // če ima dovolj parametrov pridobi njegovo oceno...
-				console.log("rekurziri");
+				//console.log("rekurziri " + select_id);
+				values[select_id] = get_evaluation(select_id, alt_id); //REKURZIVEN klic
 			} else { // če ima premalo parametrov -> ERROR!
 				score = "!error:Premalo podparametrov!";
 			}
@@ -103,8 +104,7 @@ function get_evaluation(parent_id, alt_id) {
 	});
 
 	$.each(rules[parent_id], function(i, row) {
-		$.each(row, function(j, val, a) {
-			console.log(val+" "+a);
+		$.each(row, function(j, val) {
 			if( val == values[i] ) {
 				lines.push(j);
 				//console.log("line: " + j)
@@ -115,7 +115,7 @@ function get_evaluation(parent_id, alt_id) {
 	line = get_most_rep(lines);
 
 	if( $("#"+parent_id+"-"+line+"-option").length > 0)
-		alert( $("#"+parent_id+"-"+line+"-option").val().trim() );
+		score = $("#"+parent_id+"-"+line+"-option").val().trim();
 
 	//console.log(values);
 	console.log("--");
@@ -147,7 +147,6 @@ function get_children_id_for(parentid) {
 	});
 
 	//console.dir(children);
-	console.dir(rules);
 }
 
 function get_most_rep(arr) {
