@@ -99,4 +99,7 @@ function test1(){
 	$("#5 .param input").val("Hard Drive");
 	add_value(5, "Neprimeren");
 	add_value(5, "Primeren");
+
+	init_rules();
+	render_rules();
 }

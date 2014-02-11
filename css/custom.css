@@ -58,12 +58,12 @@ div#footer{
 	padding: 10px 0 0 0;
 }
 
-table tr td {
+#page4 table tr td {
 	border: solid 1px #999;
 	padding: 0 6px;	
 }
 
-table thead {
+ #page4 table thead {
 	text-decoration: underline;
 	font-weight: bold;
 }

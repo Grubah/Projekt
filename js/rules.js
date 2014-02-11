@@ -20,7 +20,7 @@ function init_rules(){
 	});
 
 	rules = n_rules;
-	//console.dir(rules);
+	console.dir(rules);
 }
 
 
@@ -72,7 +72,7 @@ function render_rules(){
 					<td>'+rule[cell][a]+'</td>' ;
 			} );
 			output += ' \
-					<td>'+generate_options(i)+'</td>' ;
+					<td>'+generate_options(i, a)+'</td>' ;
 			output += ' \
 				</tr>';
 		}
@@ -124,7 +124,8 @@ function get_children_values(p_id){
 	return table;
 }
 
-function get_compared_children(p_id){
+// vrne tabelo s primerjanimi vrednostmi
+function get_compared_children(p_id){ 
 	var table = get_children_values(p_id);  // hrani vse zaloge vrednosti potrebne za primerjavo
 	var total = 1; // število potrebnih primerjav
 	var limit = 1; // določa kdaj v tabeli je potrebno začeti zapisovati novo vrednost
@@ -155,23 +156,33 @@ function get_compared_children(p_id){
 	return compared;
 }
 
-
+// pridobi posamezne vrednosti vseh otrok za določenega starša
 function get_options(id){
 	var options = new Array();
 	$( "#"+id+"-values li" ).each(function(i){
 		//console.log(i + ": " + $(this).text());
-		options.push($(this).text());
+		options.push($(this).text().trim());
 	});
 
 	return options;
 }
 
-function generate_options(id){
+
+// ustvari kodo za dropdowne za specifičen parameter
+function generate_options(id, select_id){
 	var options = get_options(id);
 
-	var output = ' \
-		<select>';
+	if(select_id == null) {
+		var output = ' \
+		<select id="'+id+'-eval-select" onchange="evaluate_all('+alts+')"> \
+			<option>! Nedoločeno !</options>';
+	} else {
+		var output = ' \
+		<select id="'+id+'-'+select_id+'-option"> \
+			<option>! Nedoločeno !</options>';
 
+	}
+	
 	$.each(options, function(i, opt) {
 		output += ' \
 			<option value="'+opt+'">'+opt+'</options>';
