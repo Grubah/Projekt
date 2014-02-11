@@ -6,8 +6,8 @@ function add_alternative() {
 
 	alts ++;
 
-	console.log("add new alt");
-	console.dir(evaluvations);
+	//console.log("add new alt");
+	//console.dir(evaluvations);
 }
 
 function draw_alternative(params, evals) {
@@ -62,13 +62,14 @@ function evaluate_all(alt_id) {
 	var score = new Array();
 	var params = get_params(true);
 
+	console.dir(evaluations);
 
 	$.each(evaluations, function(id) {
-		score[id] = get_evaluation(id, alt_id);
-		console.log(id + " id")
+		score[id] = get_evaluation(evaluations[id], alt_id);
+		console.log(id + " eval for id")
 	});
-
-	console.dir(params);
+	console.log("score");
+	console.dir(score);
 
 	for(var i=0; i < params.length; i++) {
 		var label;
