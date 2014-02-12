@@ -11,6 +11,8 @@ function add_alternative() {
 }
 
 function draw_alternative(params, evals) {
+
+	console.dir(params);
 	var output = ' \
 		<div id="'+alts+'-alt"  class="panel panel-default"> \
 			<div class="panel-heading"> \
@@ -156,13 +158,16 @@ function get_params(parents) {
 
 	var $parents = $( "#page2 ul li.parent" ); //vsi parametri ki imajo pod parametre
 	$parents.each(function( i ) { //za vsak element...
-		length = $("#"+i+"-children li").length;
+		length = $("#"+$(this).attr('id')+"-children li").length;
 		if( length == 0 && parents == false ) { //... ki nima podparametrov
-			temp.push(i);
+			temp.push($(this).attr('id'));
 		} else if (length > 1 && parents == true) {
-			temp.push(i);
+			temp.push($(this).attr('id'));
 		}
 	});
+
+	/*console.log("params parents: "+parents);
+	console.dir(temp);*/
 
 	return temp;
 }

@@ -101,21 +101,33 @@ function test1(){
 	add_value(5, "Neprimeren");
 	add_value(5, "Primeren");
 
-	add_parameter(4);
-	rename_parameter(6, "neke");
-	$("#6 .param input").val("neke");
-	add_value(6, "Slab");
-	add_value(6, "Povprečen");
-	add_value(6, "Dober");
 
 	add_parameter(4);
-	rename_parameter(7, "asdf");
-	$("#7 .param input").val("asdf");
-	add_value(7, "Slab1");
-	add_value(7, "Povprečen1");
-	add_value(7, "Dober1");
+	rename_parameter(6, "frekvenca");
+	$("#6 .param input").val("frekvenca");
+	add_value(6, "mala");
+	add_value(6, "povprečna");
+	add_value(6, "velika");
+
+	add_parameter(4);
+	rename_parameter(7, "velikost");
+	$("#7 .param input").val("velikost");
+	add_value(7, "mala");
+	add_value(7, "velika");
 
 
+	add_parameter(5);
+	rename_parameter(8, "tip");
+	$("#8 .param input").val("tip");
+	add_value(8, "HD");
+	add_value(8, "SSD");
+
+	add_parameter(5);
+	rename_parameter(9, "velikost");
+	$("#9 .param input").val("velikost");
+	add_value(9, "mala");
+	add_value(9, "povprečna");
+	add_value(9, "velika");
 
 	init_rules();
 	render_rules();
