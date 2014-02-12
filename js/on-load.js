@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 	init_page(); // Nastavi funckije in lastnosti kot morajo biti na začetku
 
-	//test1(); // naloži testni primer
+	test1(); // naloži testni primer
 
 	console.log("Page loaded!");
 });

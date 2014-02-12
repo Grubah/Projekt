@@ -81,7 +81,7 @@ function evaluate_all(alt_id) {
 			label = score[i];
 		}
 
-		$("#"+params[i]+"-result").text(label);
+		$("#"+alt_id+"-alt #"+params[i]+"-result").text(label);
 	}
 
 	console.log("Evaluation on "+alt_id+" complete");

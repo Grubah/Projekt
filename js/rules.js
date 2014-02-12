@@ -20,7 +20,7 @@ function init_rules(){
 	});
 
 	rules = n_rules;
-	console.dir(rules);
+	//console.dir(rules);
 }
 
 
