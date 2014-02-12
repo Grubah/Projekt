@@ -11,8 +11,6 @@ function add_alternative() {
 }
 
 function draw_alternative(params, evals) {
-
-	console.dir(params);
 	var output = ' \
 		<div id="'+alts+'-alt"  class="panel panel-default"> \
 			<div class="panel-heading"> \

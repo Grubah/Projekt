@@ -6,21 +6,21 @@ function init_rules(){
 	var $parents = $( "#page2 ul li.parent" ); //vsi parametri ki imajo pod parametre
 
 	$parents.each(function( i ) { //za vsak element...
-		if( $("#"+i+"-children li").length > 1 ) { //... ki ima vsaj dva otroka
+		if( $("#"+this.id+"-children li").length > 1 ) { //... ki ima vsaj dva otroka
 			var temp = {};
-			var ids = get_children_ids(i);
-			var child = get_compared_children(i);
+			var ids = get_children_ids(this.id);
+			var child = get_compared_children(this.id);
 
 			$.each(ids, function(j, id) {
 				temp[id] = child[j];
 			});
 
-			n_rules[i] = temp;
+			n_rules[this.id] = temp;
 		}
 	});
 
 	rules = n_rules;
-	//console.dir(rules);
+	console.dir(rules);
 }
 
 
