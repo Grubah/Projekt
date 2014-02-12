@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 	init_page(); // Nastavi funckije in lastnosti kot morajo biti na začetku
 
-	test1(); // naloži testni primer
+	test2(); // naloži testni primer
 
 	console.log("Page loaded!");
 });
@@ -40,10 +40,10 @@ function init_page(){
 		add_parameter(0);
 	});
 
-	$("#btn4").click(function() {
+	/*$("#btn4").click(function() {
 		init_rules();
 		render_rules();
-	});
+	});*/
 
 	$("#btn_add_alt").click(function() {
 		add_alternative();

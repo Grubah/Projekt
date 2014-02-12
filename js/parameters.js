@@ -22,12 +22,18 @@ function add_parameter(parent){
 
 	//console.log("new parameter with id"+element_count+" added to "+parent+"-children");
 	element_count++;
+
+	init_rules();
+	render_rules();
 }
 
 //funkcija ki se kliče ob izbrisu parametra
 function remove_parameter(id){
 	$("#"+id).remove();
 	remove_stock_value(id);
+
+	init_rules();
+	render_rules();
 
 	//console.log("parameter "+id+" removed");
 }

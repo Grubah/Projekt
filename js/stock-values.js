@@ -22,7 +22,7 @@ function new_stock_value(parent_id, param_id){
 			</div> \
 		</div>';
 
-		$("#"+parent_id+"-stock").append(output); //vedno dodamo za starša
+	$("#"+parent_id+"-stock").append(output); //vedno dodamo za starša
 }
 
 // doda vrednost v elementu zaloge vrednosti
@@ -40,7 +40,7 @@ function add_value(param_id, name){
 		output =" \
 			<li> \
 				<text>"+value+"</text> \
-				<img src='images/delete.png' class='button' width='16px' onclick='$(this).parent().remove()' /> \
+				<img src='images/delete.png' class='button' width='16px' onclick='$(this).parent().remove(); init_rules(); render_rules();' /> \
 			</li>"; 
 
 		$("#"+param_id+"-values").append(output);
@@ -56,9 +56,15 @@ function add_value(param_id, name){
 		$("#"+param_id+"-values").before(output);
 	}
 	//console.log("added new stock value with the name " + value + ", to " + param_id);
+
+	init_rules();
+	render_rules();
 }
 
 //izbriše celotno zalogo vrednosti
 function remove_stock_value(id){
 	$("#"+id+"-stock").remove();
+
+	init_rules();
+	render_rules();
 }
